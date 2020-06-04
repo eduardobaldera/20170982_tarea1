@@ -17,9 +17,9 @@ public class Main {
         do {
             url = scan.nextLine();
             if (urlValido(url)) {
-                System.out.println("URL valido." + "\u2713"+ " Parsing Website...\n");
+                System.out.println("URL valido. Parsing Website...\n");
             } else {
-                System.out.println("URL invalido" + "\u26A0" + " Por favor inserte un URL valido (i.e.: https://google.com)\n");
+                System.out.println("URL invalido. Por favor inserte un URL valido (i.e.: https://google.com)\n");
             }
         } while (!urlValido(url));
         scan.close();
@@ -31,6 +31,12 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //Indicar la cantidad de lineas del recurso retornado.
+        int lineas = rawDoc.split("\n").length;
+        mostrar('A', "Cantidad de lineas del recurso retornado: ", lineas);
+
+
     }
 
     private static boolean urlValido (String url) {
@@ -39,5 +45,12 @@ public class Main {
             return true;
         }
         return false;
+    }
+
+    private static void mostrar(char letra, String titulo, int cantidad) {
+        System.out.println("=========== OPERACION " + letra + " ===========");
+        System.out.println(titulo + cantidad);
+        System.out.println("_________________________________");
+        return;
     }
 }
